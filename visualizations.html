@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations - Erim</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;700;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+    <style>
+        .viz-container {
+            background: var(--color-surface);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+        
+        .viz-title {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+        
+        .viz-description {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.0625rem;
+        }
+        
+        #dataViz,
+        #creativeArt {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            transition: transform var(--transition-fast);
+        }
+        
+        .back-link:hover {
+            transform: translateX(-0.5rem);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">Eri M.</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="visualizations.html">Visualizations</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main style="margin-top: 5rem;">
+        <section class="section">
+            <div class="container">
+                <a href="index.html" class="back-link">
+                    <span>←</span>
+                    <span>Back to Home</span>
+                </a>
+                
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h1 class="section-title">My Visualizations</h1>
+                </div>
+                
+                <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-lg); font-size: 1.125rem;">
+                    A collection of data visualizations and creative SVG art created with JavaScript.
+                </p>
+
+                <!-- Data Visualization -->
+                <div class="viz-container">
+                    <h2 class="viz-title">Interactive Skills Chart</h2>
+                    <p class="viz-description">
+                        A bar chart visualization showing my proficiency levels in various programming languages and technologies.
+                    </p>
+                    <svg id="dataViz" viewBox="0 0 800 500"></svg>
+                </div>
+
+                <!-- Creative SVG Art -->
+                <div class="viz-container">
+                    <h2 class="viz-title">Geometric Harmony</h2>
+                    <p class="viz-description">
+                        An animated geometric art piece exploring patterns, shapes, and color harmony through SVG.
+                    </p>
+                    <svg id="creativeArt" viewBox="0 0 800 600"></svg>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Eri Masahisa. Built with passion and code.</p>
+            <p class="footer-tech">HTML · CSS · JavaScript · SVG</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="vis.js"></script>
+</body>
+</html>

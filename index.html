@@ -1,11 +1,280 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Test</title>
-
-  <!-- 追加 -->
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erim - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;700;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
 </head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Eri M.</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="visualizations.html">Visualizations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <header class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Hello, I'm</span>
+                <span class="title-name">Eri Masahisa</span>
+            </h1>
+            <p class="hero-subtitle">UX/UI Designer · Interactive Arts Student · Creative Problem Solver</p>
+            <a href="#about" class="cta-button">Explore My Work</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">About Me</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="image-placeholder">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="100" r="90" fill="#2a2a2a"/>
+                                <circle cx="100" cy="80" r="30" fill="#4a4a4a"/>
+                                <path d="M 50 140 Q 100 180 150 140" stroke="#4a4a4a" stroke-width="15" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="about-content">
+                        <p class="about-intro">I'm a UX/UI design student at Simon Fraser University, passionate about creating intuitive, accessible experiences that make a meaningful impact on people's lives.</p>
+                        <p>With a concentration in design development for web and mobile, I bring together user research, visual design, and cross-functional collaboration to solve real-world problems through human-centered design.</p>
+                        <p>Currently interning at a Japanese restaurant consultancy, I'm gaining hands-on experience in balancing creative vision with business objectives while designing for international markets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section education-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Simon Fraser University</h3>
+                            <p class="timeline-period">September 2023 - Present</p>
+                            <p class="timeline-description">Bachelor of Science in Interactive Arts & Technology with a concentration in design development for web and mobile. Focusing on user experience design, interface design, and human-centered design principles.</p>
+                            <div class="course-tags">
+                                <span class="tag">UX Design</span>
+                                <span class="tag">UI Design</span>
+                                <span class="tag">Web Design</span>
+                                <span class="tag">Mobile Design</span>
+                                <span class="tag">User Research</span>
+                                <span class="tag">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">Design Skills</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">UX Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">UI Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Visual Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Prototyping</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">Research & Strategy</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">User Research</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Usability Testing</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Competitor Analysis</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title">Tools & Software</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Illustrator</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">InDesign</span>
+                            <span class="skill-tag">After Effects</span>
+                            <span class="skill-tag">ProtoPie</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">Experience</h2>
+                </div>
+                <div class="experience-grid">
+                    <article class="experience-card">
+                        <div class="card-header">
+                            <h3 class="card-title">UX/UI Design Intern</h3>
+                            <span class="card-date">Jun 2025 - Present</span>
+                        </div>
+                        <p class="card-description">Japanese Restaurant Consultancy (G-factory) - Remote, Japan</p>
+                        <ul class="card-highlights">
+                            <li>Redesigned corporate website and developed landing page for culinary training project (sushi, ramen, yakitori)</li>
+                            <li>Conducted competitive analysis for domestic and international Japanese food industry markets</li>
+                            <li>Iterated designs based on feedback from marketing and business teams, learning to balance creative vision with business objectives</li>
+                            <li>Gained practical experience in cross-functional communication and teamwork in real-world corporate setting</li>
+                        </ul>
+                    </article>
+                    <article class="experience-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Voice-Activated Dietary App</h3>
+                            <span class="card-date">Mar 2025 - Apr 2025</span>
+                        </div>
+                        <p class="card-description">Simon Fraser University - IAT 334 Project</p>
+                        <ul class="card-highlights">
+                            <li>Designed mobile app to support users with dietary restrictions using voice navigation</li>
+                            <li>Created features like ingredient substitution, restaurant menu parsing, and step-by-step cooking guidance</li>
+                            <li>Conducted usability tests in realistic contexts, iterating based on findings to improve user alignment</li>
+                        </ul>
+                    </article>
+                    <article class="experience-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pediatric Dental Brochures</h3>
+                            <span class="card-date">Jul 2024 - Aug 2024</span>
+                        </div>
+                        <p class="card-description">UX Design Project - Remote, Japan</p>
+                        <ul class="card-highlights">
+                            <li>Designed three brochures to teach children hygiene practices using Adobe InDesign, Figma, and Photoshop</li>
+                            <li>Developed UI-friendly layouts to support parental guidance and education</li>
+                            <li>Integrated feedback from dental staff through two design iterations for improved clarity and communication</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                </div>
+                <div class="contact-content">
+                    <p class="contact-intro">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!</p>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                        <p class="form-feedback" id="formFeedback"></p>
+                    </form>
+                    <div class="contact-links">
+                        <a href="mailto:ema96@sfu.ca" class="contact-link">
+                            <span class="link-icon">✉</span>
+                            <span>ema96@sfu.ca</span>
+                        </a>
+                        <a href="tel:604-356-7328" class="contact-link">
+                            <span class="link-icon">📱</span>
+                            <span>604-356-7328</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                            <span class="link-icon">🔗</span>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                        <a href="https://github.com/erim908" target="_blank" class="contact-link">
+                            <span class="link-icon">⚡</span>
+                            <span>Portfolio & GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Eri Masahisa. Built with passion and code.</p>
+            <p class="footer-tech">HTML · CSS · JavaScript</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
