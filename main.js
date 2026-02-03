@@ -200,5 +200,5 @@ document.querySelectorAll('.experience-card').forEach(card => {
 // ===================================
 // Console Easter Egg
 // ===================================
-console.log('%c👋 Hello, curious developer!', 'color: #d4502e; font-size: 20px; font-weight: bold;');
+console.log('%c Hello, curious developer!', 'color: #d4502e; font-size: 20px; font-weight: bold;');
 console.log('%cThanks for checking out the code. Feel free to reach out if you want to collaborate!', 'color: #666; font-size: 14px;');

@@ -1,6 +1,4 @@
-/* ===================================
-   CSS Variables & Reset
-   =================================== */
+/* CSS Variables & Reset*/
 :root {
     /* Colors - Warm, editorial palette */
     --color-bg: #faf8f5;
@@ -53,9 +51,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ===================================
-   Typography
-   =================================== */
+/* Typography */
 h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 600;
@@ -75,9 +71,8 @@ p {
     font-weight: 400;
 }
 
-/* ===================================
-   Utility Classes
-   =================================== */
+/*
+   Utility Classes */
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -89,9 +84,7 @@ p {
     position: relative;
 }
 
-/* ===================================
-   Navigation
-   =================================== */
+/* Navigation*/
 .navbar {
     position: fixed;
     top: 0;
@@ -189,9 +182,7 @@ p {
     width: 100%;
 }
 
-/* ===================================
-   Hero Section
-   =================================== */
+/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -293,9 +284,7 @@ p {
     animation: scrollPulse 2s ease-in-out infinite;
 }
 
-/* ===================================
-   Section Headers
-   =================================== */
+/* Section Headers */
 .section-header {
     display: flex;
     align-items: baseline;
@@ -316,9 +305,7 @@ p {
     position: relative;
 }
 
-/* ===================================
-   About Section
-   =================================== */
+/* About Section*/
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -357,9 +344,7 @@ p {
     margin-bottom: var(--spacing-md) !important;
 }
 
-/* ===================================
-   Education Section
-   =================================== */
+/* Education Section*/
 .education-section {
     background: var(--color-surface);
 }
@@ -428,9 +413,7 @@ p {
     font-weight: 500;
 }
 
-/* ===================================
-   Skills Section
-   =================================== */
+/* Skills Section */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
@@ -504,9 +487,7 @@ p {
     transform: translateY(-2px);
 }
 
-/* ===================================
-   Experience Section
-   =================================== */
+/* Experience Section */
 .experience-section {
     background: var(--color-surface);
 }
@@ -576,9 +557,7 @@ p {
     font-weight: bold;
 }
 
-/* ===================================
-   Contact Section
-   =================================== */
+/* Contact Section */
 .contact-content {
     max-width: 50rem;
     margin: 0 auto;
@@ -690,9 +669,7 @@ p {
     font-size: 1.5rem;
 }
 
-/* ===================================
-   Footer
-   =================================== */
+/* Footer */
 .footer {
     background: var(--color-surface);
     border-top: 1px solid var(--color-border);
@@ -710,9 +687,7 @@ p {
     color: var(--color-accent);
 }
 
-/* ===================================
-   Animations
-   =================================== */
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -744,9 +719,8 @@ p {
     }
 }
 
-/* ===================================
-   Responsive Design
-   =================================== */
+/* 
+   Responsive Design */
 @media (max-width: 768px) {
     :root {
         --spacing-xl: 4rem;

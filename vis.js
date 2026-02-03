@@ -1,15 +1,15 @@
-// ===================================
+// 
 // Visualization JavaScript
-// ===================================
+// 
 
 document.addEventListener('DOMContentLoaded', function() {
     createDataVisualization();
     createCreativeArt();
 });
 
-// ===================================
+// 
 // Data Visualization: Skills Bar Chart
-// ===================================
+// 
 function createDataVisualization() {
     const svg = document.getElementById('dataViz');
     if (!svg) return;
@@ -368,9 +368,9 @@ function getTrianglePoints(x, y, size) {
     return `${x},${y} ${x + size},${y} ${x + size/2},${y - height}`;
 }
 
-// ===================================
+// 
 // Helper Functions
-// ===================================
+// 
 function createSVGElement(type, attributes = {}) {
     const element = document.createElementNS('http://www.w3.org/2000/svg', type);
     
