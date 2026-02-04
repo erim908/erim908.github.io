@@ -577,6 +577,16 @@ p {
     color: var(--color-accent);
     font-weight: bold;
 }
+.experience-img {
+  width: 100%;
+  height: auto;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
 
 /* Contact Section */
 .contact-content {
