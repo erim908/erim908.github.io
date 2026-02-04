@@ -1,6 +1,3 @@
-// ===================================
-// Main JavaScript for Personal Website
-// ===================================
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-// ===================================
+
 // Hamburger Menu
-// ===================================
+
 function initializeHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
@@ -47,9 +44,7 @@ function initializeHamburgerMenu() {
     });
 }
 
-// ===================================
 // Skill Bar Animation
-// ===================================
 function initializeSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
     
@@ -67,9 +62,9 @@ function initializeSkillBars() {
     skillBars.forEach(bar => observer.observe(bar));
 }
 
-// ===================================
+
 // Form Validation
-// ===================================
+
 function initializeFormValidation() {
     const form = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
@@ -136,9 +131,7 @@ function showSuccessMessage() {
     feedback.classList.add('success');
 }
 
-// ===================================
-// Navbar Scroll Effect
-// ===================================
+// Navbar Scroll 
 function initializeNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     let lastScroll = 0;
@@ -157,9 +150,8 @@ function initializeNavbarScroll() {
     });
 }
 
-// ===================================
+
 // Smooth Scroll for Navigation Links
-// ===================================
 function initializeSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -188,17 +180,10 @@ function initializeSmoothScroll() {
     });
 }
 
-// ===================================
+
 // Add interactive hover effects to cards
-// ===================================
 document.querySelectorAll('.experience-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transition = 'all 0.3s ease';
     });
 });
-
-// ===================================
-// Console Easter Egg
-// ===================================
-console.log('%c Hello, curious developer!', 'color: #d4502e; font-size: 20px; font-weight: bold;');
-console.log('%cThanks for checking out the code. Feel free to reach out if you want to collaborate!', 'color: #666; font-size: 14px;');

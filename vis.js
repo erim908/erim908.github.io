@@ -1,39 +1,57 @@
-// 
 // Visualization JavaScript
-// 
 
 document.addEventListener('DOMContentLoaded', function() {
     createDataVisualization();
     createCreativeArt();
+    
+    // Redraw on window resize for responsive behavior
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            createDataVisualization();
+        }, 250);
+    });
 });
 
-// 
 // Data Visualization: Skills Bar Chart
-// 
 function createDataVisualization() {
     const svg = document.getElementById('dataViz');
     if (!svg) return;
     
     // Data for visualization
     const skills = [
-        { name: 'UX Design', value: 90, color: '#d4502e' },
-        { name: 'UI Design', value: 90, color: '#e76f3c' },
-        { name: 'Figma', value: 95, color: '#f08d4a' },
-        { name: 'User Research', value: 85, color: '#f4a258' },
-        { name: 'Adobe Suite', value: 85, color: '#f7b766' },
-        { name: 'Prototyping', value: 85, color: '#facc74' },
-        { name: 'HTML/CSS', value: 80, color: '#fde082' }
+        { name: 'UX Design', value: 90, color: '#2E86AB' },
+        { name: 'UI Design', value: 90, color: '#3FA7D6' },
+        { name: 'Figma', value: 95, color: '#59C3C3' },
+        { name: 'User Research', value: 85, color: '#73D2DE' },
+        { name: 'Adobe Suite', value: 85, color: '#84BCDA' },
+        { name: 'Prototyping', value: 85, color: '#6CA6C1' },
+        { name: 'HTML/CSS', value: 80, color: '#4A90A4' }
     ];
     
-    // Chart dimensions
+    // Responsive chart dimensions
+    const isMobile = window.innerWidth <= 768;
     const width = 800;
-    const height = 500;
-    const margin = { top: 40, right: 40, bottom: 60, left: 120 };
+    const height = isMobile ? 600 : 500;
+    const margin = isMobile 
+        ? { top: 70, right: 25, bottom: 40, left: 190 }
+        : { top: 40, right: 40, bottom: 60, left: 120 };
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
     
+    // Reduce bar width on mobile for better readability
+    const barWidthMultiplier = isMobile ? 0.9 : 1;
+    
+    // Responsive font sizes
+   const labelFontSize = isMobile ? '30' : '16';
+　　const valueFontSize = isMobile ? '30' : '14';
+　　const titleFontSize = isMobile ? '24' : '24';
+
+    
     // Clear SVG
     svg.innerHTML = '';
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
     
     // Create background
     const bgRect = createSVGElement('rect', {
@@ -56,13 +74,14 @@ function createDataVisualization() {
     // Create bars and labels
     skills.forEach((skill, index) => {
         const y = index * (chartHeight / skills.length);
-        const barWidth = (skill.value / maxValue) * chartWidth;
+        const barWidth = (skill.value / maxValue) * chartWidth * barWidthMultiplier;
         
-        // Bar background
+        // Bar background (slightly wider than the filled bar)
+        const bgBarMultiplier = isMobile ? barWidthMultiplier + 0.05 : 1;
         const bgBar = createSVGElement('rect', {
             x: 0,
             y: y,
-            width: chartWidth,
+            width: chartWidth * bgBarMultiplier,
             height: barHeight,
             fill: '#e5e0da',
             rx: 4
@@ -92,7 +111,7 @@ function createDataVisualization() {
             'text-anchor': 'end',
             'dominant-baseline': 'middle',
             fill: '#1a1a1a',
-            'font-size': '16',
+            'font-size': labelFontSize,
             'font-weight': '600',
             'font-family': "'Darker Grotesque', sans-serif"
         });
@@ -105,7 +124,7 @@ function createDataVisualization() {
             y: y + barHeight / 2,
             'dominant-baseline': 'middle',
             fill: '#666666',
-            'font-size': '14',
+            'font-size': valueFontSize,
             'font-weight': '600',
             'font-family': "'Darker Grotesque', sans-serif"
         });
@@ -127,8 +146,8 @@ function createDataVisualization() {
         x: width / 2,
         y: 25,
         'text-anchor': 'middle',
-        fill: '#d4502e',
-        'font-size': '24',
+        fill: '#2E86AB',
+        'font-size': titleFontSize,
         'font-weight': '700',
         'font-family': "'Fraunces', serif"
     });
@@ -159,9 +178,7 @@ function animateBar(bar, targetWidth) {
     animate();
 }
 
-// ===================================
-// Creative SVG Art: Geometric Patterns
-// ===================================
+// Creative SVG Art: Winter Scene
 function createCreativeArt() {
     const svg = document.getElementById('creativeArt');
     if (!svg) return;
@@ -171,206 +188,276 @@ function createCreativeArt() {
     
     // Clear SVG
     svg.innerHTML = '';
+    svg.setAttribute('viewBox', '-400 -300 800 600');
     
-    // Create gradient definitions
+    // Create defs for reusable elements
     const defs = createSVGElement('defs');
     svg.appendChild(defs);
     
-    // Gradient 1
-    const gradient1 = createSVGElement('linearGradient', {
-        id: 'grad1',
-        x1: '0%',
-        y1: '0%',
-        x2: '100%',
-        y2: '100%'
+    // Snowball gradient
+    const snowballGradient = createSVGElement('radialGradient', {
+        id: 'snowball',
+        cx: '0.25',
+        cy: '0.25',
+        r: '1'
     });
-    const stop1_1 = createSVGElement('stop', {
+    const stop1 = createSVGElement('stop', {
         offset: '0%',
-        'stop-color': '#d4502e',
-        'stop-opacity': '1'
+        'stop-color': 'white'
     });
-    const stop1_2 = createSVGElement('stop', {
+    const stop2 = createSVGElement('stop', {
+        offset: '50%',
+        'stop-color': 'white'
+    });
+    const stop3 = createSVGElement('stop', {
         offset: '100%',
-        'stop-color': '#f4d03f',
-        'stop-opacity': '1'
+        'stop-color': '#d6d6d6'
     });
-    gradient1.appendChild(stop1_1);
-    gradient1.appendChild(stop1_2);
-    defs.appendChild(gradient1);
+    snowballGradient.appendChild(stop1);
+    snowballGradient.appendChild(stop2);
+    snowballGradient.appendChild(stop3);
+    defs.appendChild(snowballGradient);
     
-    // Gradient 2
-    const gradient2 = createSVGElement('linearGradient', {
-        id: 'grad2',
-        x1: '0%',
-        y1: '0%',
-        x2: '0%',
-        y2: '100%'
+    // Tree definition
+    const treeGroup = createSVGElement('g', { id: 'tree' });
+    const treeTriangle = createSVGElement('polygon', {
+        points: '-10,0 10,0 0,-50',
+        fill: '#38755b'
     });
-    const stop2_1 = createSVGElement('stop', {
-        offset: '0%',
-        'stop-color': '#f4d03f',
-        'stop-opacity': '0.8'
+    const treeTrunk = createSVGElement('line', {
+        x1: '0',
+        y1: '0',
+        x2: '0',
+        y2: '10',
+        stroke: '#778074',
+        'stroke-width': '2'
     });
-    const stop2_2 = createSVGElement('stop', {
-        offset: '100%',
-        'stop-color': '#d4502e',
-        'stop-opacity': '0.8'
-    });
-    gradient2.appendChild(stop2_1);
-    gradient2.appendChild(stop2_2);
-    defs.appendChild(gradient2);
+    treeGroup.appendChild(treeTriangle);
+    treeGroup.appendChild(treeTrunk);
+    defs.appendChild(treeGroup);
     
-    // Background
+    // Big snowflake definition
+    const bigFlake = createSVGElement('circle', {
+        id: 'big',
+        cx: '0',
+        cy: '0',
+        r: '5',
+        fill: 'white'
+    });
+    defs.appendChild(bigFlake);
+    
+    // Small snowflake definition
+    const smallFlake = createSVGElement('circle', {
+        id: 'small',
+        cx: '0',
+        cy: '0',
+        r: '3',
+        fill: 'white'
+    });
+    defs.appendChild(smallFlake);
+    
+    // Background sky
     const background = createSVGElement('rect', {
-        width: width,
-        height: height,
-        fill: '#1a1a1a'
+        x: '-400',
+        y: '-300',
+        width: '800',
+        height: '600',
+        fill: '#F1DBC3'
     });
     svg.appendChild(background);
     
-    // Create geometric pattern
-    createGeometricCircles(svg, width, height);
-    createFloatingShapes(svg, width, height);
-    createWavePattern(svg, width, height);
-}
-
-function createGeometricCircles(svg, width, height) {
-    const centerX = width / 2;
-    const centerY = height / 2;
-    const numCircles = 8;
+    // Ground circle
+    const ground = createSVGElement('circle', {
+        cx: '0',
+        cy: '680',
+        r: '700',
+        fill: '#F8F4E8'
+    });
+    svg.appendChild(ground);
     
-    for (let i = 0; i < numCircles; i++) {
-        const radius = 50 + i * 30;
-        const opacity = 1 - (i / numCircles) * 0.7;
-        
-        const circle = createSVGElement('circle', {
-            cx: centerX,
-            cy: centerY,
-            r: radius,
-            fill: 'none',
-            stroke: 'url(#grad1)',
-            'stroke-width': 2,
-            opacity: opacity
-        });
-        
-        svg.appendChild(circle);
-        
-        // Animate circles
-        const animateTransform = createSVGElement('animateTransform', {
-            attributeName: 'transform',
-            type: 'rotate',
-            from: `0 ${centerX} ${centerY}`,
-            to: `360 ${centerX} ${centerY}`,
-            dur: `${10 + i * 2}s`,
-            repeatCount: 'indefinite'
-        });
-        circle.appendChild(animateTransform);
-    }
-}
-
-function createFloatingShapes(svg, width, height) {
-    const shapes = [
-        { type: 'rect', x: 100, y: 100, size: 60 },
-        { type: 'rect', x: 650, y: 450, size: 50 },
-        { type: 'polygon', x: 150, y: 450, size: 40 },
-        { type: 'polygon', x: 650, y: 100, size: 55 }
+    // Add trees - 4 trees positioned on white ground area, well separated from snowman
+    const trees = [
+        { x: -320, y: 150, scale: 4.5 },
+        { x: -200, y: 160, scale: 4.2 },
+        { x: 100, y: 155, scale: 4.8 },
+        { x: 260, y: 150, scale: 4.6 }
     ];
     
-    shapes.forEach((shape, index) => {
-        if (shape.type === 'rect') {
-            const rect = createSVGElement('rect', {
-                x: shape.x,
-                y: shape.y,
-                width: shape.size,
-                height: shape.size,
-                fill: 'url(#grad2)',
-                transform: `rotate(45 ${shape.x + shape.size/2} ${shape.y + shape.size/2})`
-            });
-            svg.appendChild(rect);
-            
-            // Floating animation
-            const animate = createSVGElement('animateTransform', {
-                attributeName: 'transform',
-                type: 'translate',
-                values: `0,0; 0,-20; 0,0`,
-                dur: `${3 + index * 0.5}s`,
-                repeatCount: 'indefinite',
-                additive: 'sum'
-            });
-            rect.appendChild(animate);
-            
-        } else {
-            // Triangle
-            const points = getTrianglePoints(shape.x, shape.y, shape.size);
-            const polygon = createSVGElement('polygon', {
-                points: points,
-                fill: 'url(#grad1)',
-                opacity: 0.6
-            });
-            svg.appendChild(polygon);
-            
-            // Rotation animation
-            const centerX = shape.x;
-            const centerY = shape.y;
-            const animate = createSVGElement('animateTransform', {
-                attributeName: 'transform',
-                type: 'rotate',
-                from: `0 ${centerX} ${centerY}`,
-                to: `360 ${centerX} ${centerY}`,
-                dur: `${8 + index}s`,
-                repeatCount: 'indefinite'
-            });
-            polygon.appendChild(animate);
-        }
+    trees.forEach(tree => {
+        const use = createSVGElement('use', {
+            href: '#tree',
+            transform: `translate(${tree.x}, ${tree.y}) scale(${tree.scale})`
+        });
+        svg.appendChild(use);
+    });
+    
+    // Create snowman (smaller)
+    createSnowman(svg);
+    
+    // Add falling snowflakes
+    const snowflakes = [
+        { type: 'big', x: 0, y: 0, speed: 'fast', opacity: 1 },
+        { type: 'big', x: -200, y: -80, speed: 'fast', opacity: 0.7 },
+        { type: 'big', x: 120, y: -160, speed: 'fast', opacity: 1 },
+        { type: 'big', x: 200, y: -80, speed: 'fast', opacity: 0.7 },
+        { type: 'big', x: 120, y: 200, speed: 'slow', opacity: 1 },
+        { type: 'big', x: -280, y: -320, speed: 'slow', opacity: 0.7 },
+        { type: 'big', x: 360, y: -320, speed: 'slow', opacity: 0.7 },
+        { type: 'small', x: 40, y: -200, speed: 'slow', opacity: 1 },
+        { type: 'small', x: -200, y: -240, speed: 'slow', opacity: 0.7 },
+        { type: 'small', x: 120, y: 280, speed: 'slow', opacity: 1 },
+        { type: 'small', x: 40, y: -320, speed: 'slow', opacity: 0.7 },
+        { type: 'big', x: -100, y: 100, speed: 'fast', opacity: 0.8 },
+        { type: 'small', x: 250, y: 50, speed: 'slow', opacity: 0.6 },
+        { type: 'big', x: -150, y: -100, speed: 'slow', opacity: 0.9 }
+    ];
+    
+    snowflakes.forEach((flake, index) => {
+        const use = createSVGElement('use', {
+            href: `#${flake.type}`,
+            x: flake.x,
+            y: flake.y,
+            opacity: flake.opacity
+        });
+        
+        // Add animation
+        const animateTransform = createSVGElement('animateTransform', {
+            attributeName: 'transform',
+            type: 'translate',
+            from: `0 -400`,
+            to: `0 400`,
+            dur: flake.speed === 'fast' ? '3s' : '5s',
+            repeatCount: 'indefinite',
+            begin: `${index * 0.3}s`
+        });
+        use.appendChild(animateTransform);
+        svg.appendChild(use);
     });
 }
 
-function createWavePattern(svg, width, height) {
-    const numWaves = 3;
+function createSnowman(svg) {
+    // Snowman group - smaller size (scale 0.6)
+    const snowmanGroup = createSVGElement('g', {
+        transform: 'translate(-80, 150) scale(0.6)'
+    });
     
-    for (let i = 0; i < numWaves; i++) {
-        const y = height - 150 + i * 30;
-        const path = createSVGElement('path', {
-            d: generateWavePath(width, y),
-            fill: 'none',
-            stroke: i === 1 ? '#f4d03f' : '#d4502e',
-            'stroke-width': 2,
-            opacity: 0.3 + i * 0.2
-        });
-        svg.appendChild(path);
-        
-        // Wave animation
-        const animate = createSVGElement('animate', {
-            attributeName: 'd',
-            dur: `${4 + i}s`,
-            repeatCount: 'indefinite',
-            values: `${generateWavePath(width, y)}; ${generateWavePath(width, y, Math.PI)}; ${generateWavePath(width, y)}`
-        });
-        path.appendChild(animate);
-    }
+    // Bottom snowball (big)
+    const bottomBall = createSVGElement('circle', {
+        cx: '0',
+        cy: '60',
+        r: '80',
+        fill: 'url(#snowball)'
+    });
+    snowmanGroup.appendChild(bottomBall);
+    
+    // Top snowball (head)
+    const topBall = createSVGElement('circle', {
+        cx: '0',
+        cy: '-40',
+        r: '50',
+        fill: 'url(#snowball)'
+    });
+    snowmanGroup.appendChild(topBall);
+    
+    // Carrot nose
+    const nose = createSVGElement('polygon', {
+        points: '10,-46 50,-40 10,-34',
+        fill: '#e66465'
+    });
+    snowmanGroup.appendChild(nose);
+    
+    // Left eye
+    const leftEye = createSVGElement('circle', {
+        cx: '-15',
+        cy: '-55',
+        r: '5',
+        fill: 'black'
+    });
+    snowmanGroup.appendChild(leftEye);
+    
+    // Right eye
+    const rightEye = createSVGElement('circle', {
+        cx: '15',
+        cy: '-55',
+        r: '5',
+        fill: 'black'
+    });
+    snowmanGroup.appendChild(rightEye);
+    
+    // Left arm
+    const leftArm = createSVGElement('line', {
+        x1: '-40',
+        y1: '30',
+        x2: '-90',
+        y2: '-30',
+        stroke: 'black',
+        'stroke-width': '5'
+    });
+    snowmanGroup.appendChild(leftArm);
+    
+    // Left arm branch
+    const leftBranch = createSVGElement('line', {
+        x1: '-65',
+        y1: '0',
+        x2: '-90',
+        y2: '-10',
+        stroke: 'black',
+        'stroke-width': '5'
+    });
+    snowmanGroup.appendChild(leftBranch);
+    
+    // Right arm
+    const rightArm = createSVGElement('line', {
+        x1: '40',
+        y1: '30',
+        x2: '90',
+        y2: '-30',
+        stroke: 'black',
+        'stroke-width': '5'
+    });
+    snowmanGroup.appendChild(rightArm);
+    
+    // Right arm branch
+    const rightBranch = createSVGElement('line', {
+        x1: '65',
+        y1: '0',
+        x2: '90',
+        y2: '-10',
+        stroke: 'black',
+        'stroke-width': '5'
+    });
+    snowmanGroup.appendChild(rightBranch);
+    
+    // Buttons on body
+    const button1 = createSVGElement('circle', {
+        cx: '0',
+        cy: '20',
+        r: '4',
+        fill: 'black'
+    });
+    snowmanGroup.appendChild(button1);
+    
+    const button2 = createSVGElement('circle', {
+        cx: '0',
+        cy: '40',
+        r: '4',
+        fill: 'black'
+    });
+    snowmanGroup.appendChild(button2);
+    
+    const button3 = createSVGElement('circle', {
+        cx: '0',
+        cy: '60',
+        r: '4',
+        fill: 'black'
+    });
+    snowmanGroup.appendChild(button3);
+    
+    svg.appendChild(snowmanGroup);
 }
 
-function generateWavePath(width, y, phase = 0) {
-    let path = `M 0 ${y}`;
-    const amplitude = 20;
-    const frequency = 0.02;
-    
-    for (let x = 0; x <= width; x += 10) {
-        const waveY = y + Math.sin(x * frequency + phase) * amplitude;
-        path += ` L ${x} ${waveY}`;
-    }
-    
-    return path;
-}
 
-function getTrianglePoints(x, y, size) {
-    const height = (Math.sqrt(3) / 2) * size;
-    return `${x},${y} ${x + size},${y} ${x + size/2},${y - height}`;
-}
-
-// 
 // Helper Functions
-// 
 function createSVGElement(type, attributes = {}) {
     const element = document.createElementNS('http://www.w3.org/2000/svg', type);
     

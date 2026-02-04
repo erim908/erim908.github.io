@@ -1,15 +1,15 @@
 /* CSS Variables & Reset*/
 :root {
-    /* Colors - Warm, editorial palette */
-    --color-bg: #faf8f5;
+    /* Colors */
+    --color-bg: #f5f9fa;
     --color-surface: #ffffff;
     --color-text: #1a1a1a;
     --color-text-muted: #666666;
-    --color-accent: #d4502e;
-    --color-accent-dark: #a83820;
-    --color-accent-light: #f5e6e1;
-    --color-border: #e5e0da;
-    --color-highlight: #f4d03f;
+    --color-accent: #2E86AB;
+    --color-accent-dark: #1a5a7a;
+    --color-accent-light: #d6ebf5;
+    --color-border: #d4e6ed;
+    --color-highlight: #59C3C3;
     
     /* Typography */
     --font-display: 'Fraunces', serif;
@@ -114,6 +114,7 @@ p {
     color: var(--color-accent);
     text-decoration: none;
     font-style: italic;
+    position: relative;
     z-index: 1001;
 }
 
@@ -125,7 +126,10 @@ p {
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    position: relative;
     z-index: 1001;
+    align-items: center;
+    justify-content: center;
 }
 
 .hamburger span {
@@ -134,6 +138,7 @@ p {
     height: 2px;
     background: var(--color-text);
     transition: all var(--transition-base);
+    border-radius: 2px;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -197,8 +202,8 @@ p {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(circle at 20% 30%, rgba(212, 80, 46, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(244, 208, 63, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 30%, rgba(46, 134, 171, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(89, 195, 195, 0.1) 0%, transparent 50%);
     z-index: 0;
 }
 
@@ -254,13 +259,13 @@ p {
     border-radius: var(--border-radius);
     transition: all var(--transition-base);
     animation: fadeInUp 1s ease-out 0.6s both;
-    box-shadow: 0 4px 16px rgba(212, 80, 46, 0.2);
+    box-shadow: 0 4px 16px rgba(46, 134, 171, 0.2);
 }
 
 .cta-button:hover {
     background: var(--color-accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(212, 80, 46, 0.3);
+    box-shadow: 0 8px 24px rgba(46, 134, 171, 0.3);
 }
 
 .scroll-indicator {
@@ -308,7 +313,7 @@ p {
 /* About Section*/
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr ;
     gap: var(--spacing-lg);
     align-items: center;
 }
@@ -342,6 +347,22 @@ p {
     color: var(--color-text) !important;
     font-weight: 500;
     margin-bottom: var(--spacing-md) !important;
+}
+.about-mockup-card {
+  background: var(--color-surface);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  margin-top: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+.about-mockup-card img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
 }
 
 /* Education Section*/
@@ -624,7 +645,7 @@ p {
 .submit-button:hover {
     background: var(--color-accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(212, 80, 46, 0.3);
+    box-shadow: 0 4px 16px rgba(46, 134, 171, 0.3);
 }
 
 .form-feedback {
@@ -796,4 +817,9 @@ p {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .hero {
+    height: 70vh;
+  }
+ 
 }
