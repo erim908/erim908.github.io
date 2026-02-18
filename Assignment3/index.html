@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 3 — Data Visualization</title>
+
+    <!-- Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+    <script defer>
+      const options = {
+        config: {},
+        init: (view) => {
+          view.tooltip(new vegaTooltip.Handler().call);
+        },
+        view: {
+          renderer: "canvas",
+        },
+      };
+      vl.register(vega, vegaLite, options);
+    </script>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-content">
+        <a href="../index.html" class="logo">Eri M.</a>
+        <ul class="nav-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="index.html" class="active">Assignment 3</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-content">
+        <span class="hero-label">IAT 355 — Assignment 3</span>
+        <h1 class="hero-title">Video Game Sales<br><em>Data Visualization</em></h1>
+        <p class="hero-subtitle"></p>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Dataset Description -->
+      <section class="dataset-section">
+        <div class="dataset-container">
+          <div class="section-header">
+            <span class="section-number">00</span>
+            <div>
+              <h2 class="section-title">About the Dataset</h2>
+              <p class="section-desc">Understanding the video game sales data and its characteristics</p>
+            </div>
+          </div>
+
+          <div class="dataset-content">
+            <div class="dataset-overview">
+              <h3>Dataset Overview</h3>
+              <p>This dataset contains video game sales data from various platforms, regions, and time periods. It includes information about game titles, platforms, release years, genres, publishers, and sales figures across different regions (North America, Europe, Japan, and Other).</p>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-label">Variables</div>
+                <div class="stat-value">10</div>
+                <div class="stat-desc">Name, Platform, Year, Genre, Publisher, Regional Sales, Global Sales</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Data Types</div>
+                <div class="stat-value">Mixed</div>
+                <div class="stat-desc">Categorical (Platform, Genre), Numerical (Sales), Temporal (Year)</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Most Common Genre</div>
+                <div class="stat-value">Action</div>
+                <div class="stat-desc">Action games dominate the dataset, followed by Sports and Shooter genres</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label">Most Common Platform</div>
+                <div class="stat-value">DS</div>
+                <div class="stat-desc">Nintendo DS has the highest number of game titles in the dataset</div>
+              </div>
+            </div>
+
+            <div class="dataset-insights">
+              <h3>Key Insights from the Data</h3>
+              <p><strong>Sales Distribution:</strong> The dataset reveals that most video games sell relatively modest amounts (median sales are much lower than mean sales), while a small number of blockbuster titles generate extremely high sales. This indicates a highly skewed distribution typical of entertainment industries.</p>
+              
+              <p><strong>Platform Diversity:</strong> The dataset spans multiple console generations, from classic platforms like NES and Game Boy to modern systems like PS3 and Xbox 360. This allows for meaningful comparisons of how the gaming market has evolved over time.</p>
+              
+              <p><strong>Regional Variations:</strong> Sales data is broken down by region (NA, EU, JP, Other), enabling analysis of geographic preferences. For example, certain platforms and genres show strong regional biases—Japanese RPGs perform better in Japan, while FPS games dominate in North America.</p>
+              
+              <p><strong>Genre Patterns:</strong> Action and Sports genres have the most titles, but individual games in genres like Role-Playing and Platform can achieve very high sales, suggesting that quality matters more than quantity in these categories.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vis 1A -->
+      <section class="vis-section">
+        <div class="vis-container">
+          <div class="section-header">
+            <span class="section-number">1A</span>
+            <div>
+              <h2 class="section-title">Global Sales by Genre & Platform</h2>
+              <p class="section-desc">Which platforms dominate each genre? Select a genre to explore how sales are distributed across platforms.</p>
+            </div>
+          </div>
+          <div id="view" class="chart-wrapper"></div>
+        </div>
+      </section>
+
+      <!-- Vis 1B -->
+<section class="vis-section">
+  <div class="vis-container">
+    <div class="section-header">
+      <span class="section-number">1B</span>
+      <div>
+        <h2 class="section-title">Platform Preferences Across Genres</h2>
+        <p class="section-desc">A heatmap showing how different genres perform on each platform. Darker colors indicate higher sales.</p>
+      </div>
+    </div>
+    <div id="view1-2" class="chart-wrapper"></div>
+  </div>
+</section>
+
+      <!-- Vis 2A -->
+      <section class="vis-section alt">
+        <div class="vis-container">
+          <div class="section-header">
+            <span class="section-number">2A</span>
+            <div>
+              <h2 class="section-title">Sales Over Time by Platform</h2>
+              <p class="section-desc">How did platforms rise and fall over the years? Select a genre to see the top 8 platforms' sales trends over time.</p>
+            </div>
+          </div>
+          <div id="view2" class="chart-wrapper"></div>
+        </div>
+      </section>
+
+      <!-- Vis 2B -->
+<section class="vis-section">
+  <div class="vis-container">
+    <div class="section-header">
+      <span class="section-number">2B</span>
+      <div>
+        <h2 class="section-title">Platform Market Share Over Time</h2>
+        <p class="section-desc">How did the gaming market shift between platforms over the years? This stacked area chart shows each platform's share of total sales.</p>
+      </div>
+    </div>
+    <div id="view2-2" class="chart-wrapper"></div>
+  </div>
+</section>
+
+      <!-- Vis 3A -->
+      <section class="vis-section">
+        <div class="vis-container">
+          <div class="section-header">
+            <span class="section-number">3A</span>
+            <div>
+              <h2 class="section-title">Regional Sales by Platform</h2>
+              <p class="section-desc">How do sales proportions differ across NA, EU, JP, and Other regions for the top 15 platforms?</p>
+            </div>
+          </div>
+          <div id="view3" class="chart-wrapper"></div>
+        </div>
+      </section>
+
+      <!-- Vis 3B -->
+<section class="vis-section alt">
+  <div class="vis-container">
+    <div class="section-header">
+      <span class="section-number">3B</span>
+      <div>
+        <h2 class="section-title">Total Regional Sales by Platform</h2>
+        <p class="section-desc">Which platforms generated the most revenue overall? This chart shows actual sales amounts (in millions) rather than proportions.</p>
+      </div>
+    </div>
+    <div id="view3-2" class="chart-wrapper"></div>
+  </div>
+</section>
+
+      <!-- Vis 4A-->
+      <section class="vis-section alt">
+        <div class="vis-container">
+          <div class="section-header">
+            <span class="section-number">4A</span>
+            <div>
+              <h2 class="section-title">Nintendo vs Sony: Sales by Region</h2>
+              <p class="section-desc">Nintendo dominates Japan while Sony leads globally — but how different are their regional strategies?</p>
+            </div>
+          </div>
+          <div id="view4" class="chart-wrapper"></div>
+        </div>
+      </section>
+      <!-- Vis 4B-->
+<section class="vis-section">
+  <div class="vis-container">
+    <div class="section-header">
+      <span class="section-number">4B</span>
+      <div>
+        <h2 class="section-title">Nintendo vs Sony Over Time</h2>
+        <p class="section-desc">How have Nintendo and Sony's sales evolved over the years? This time-series view reveals their long-term strategies and market cycles.</p>
+      </div>
+    </div>
+    <div id="view4-2" class="chart-wrapper"></div>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2026 Eri Masahisa — IAT 355 Assignment 3</p>
+        <a href="../index.html">← Back to Portfolio</a>
+      </div>
+    </footer>
+
+    <script type="module" src="vis1A.js"></script>
+    <script type="module" src="vis1B.js"></script>
+    <script type="module" src="vis2A.js"></script>
+    <script type="module" src="vis2B.js"></script>
+    <script type="module" src="vis3A.js"></script>
+    <script type="module" src="vis3B.js"></script>
+    <script type="module" src="vis4A.js"></script>
+    <script type="module" src="vis4B.js"></script>
+  </body>
+</html>
