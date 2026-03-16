@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>D3 Circle Animation – Eri M.</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="../index.html" class="logo">Eri M.</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#skills">Skills</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../visualizations.html">Visualizations</a></li>
+        <li><a href="../Assignment3/index.html">Assignment 3</a></li>
+        <li><a href="#">Assignment 4</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+
+  
+    <div class="section-header">
+      <span class="section-number">MiniD3</span>
+      <h1 class="section-title">D3 Circle Animation</h1>
+    </div>
+    <p class="section-desc">Click anywhere on the canvas to add a circle at that exact position. The canvas holds a maximum of 10 circles — the oldest one fades out when the limit is reached. You can also click any circle to remove it individually.</p>
+
+    <p class="counter-badge">Circles: <span id="count">0</span> / 10</p>
+
+    <div id="canvas-wrap">
+
+    </div>
+
+    <p class="hint">Max 10 circles &nbsp;·&nbsp; Oldest fades out at limit &nbsp;·&nbsp; Click a circle to remove it</p>
+
+  </div>
+
+  <script type="module" src="circleAnimation.js"></script>
+
+</body>
+</html>
